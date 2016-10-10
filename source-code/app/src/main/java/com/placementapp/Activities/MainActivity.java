@@ -41,20 +41,6 @@ public class MainActivity extends AppCompatActivity  {
         tabLayout.setupWithViewPager(viewPager);
     }
 
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (item.getItemId() == android.R.id.home) {
-
-            //Intent i = new Intent(CourseOpenerActivity.this, Home.class);
-            //startActivity(i);
-            // NavUtils.navigateUpFromSameTask(this);
-            // finish();
-            return true;
-        } else {
-            return super.onOptionsItemSelected(item);
-        }
-    }
-
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new Fragment_CSE(), "CSE");
@@ -68,26 +54,21 @@ public class MainActivity extends AppCompatActivity  {
     class ViewPagerAdapter extends FragmentPagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
-
         public ViewPagerAdapter(FragmentManager manager) {
             super(manager);
         }
-
         @Override
         public Fragment getItem(int position) {
             return mFragmentList.get(position);
         }
-
         @Override
         public int getCount() {
             return mFragmentList.size();
         }
-
         public void addFragment(Fragment fragment, String title) {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }
-
         @Override
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
